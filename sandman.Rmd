@@ -1,0 +1,49 @@
+---
+title: "Enter the sandman"
+author: "David Duterte"
+date: "April 6, 2018"
+output: word_document
+---
+
+## 1. Read the mold
+
+```{r}
+mold <- read.csv("mold000.csv", header = F) # reads in the initial mold from csv file
+```
+
+
+## 2. Write matrices A and b 
+
+```{r}
+#initialize global properties
+# FIND ACTUAL VALUES B!
+Kc <- 1 # permeability of cake
+Kd <- 1 # premeability of dry mold
+Kw <- 1 # permeability of wet mold
+Papp <- 1 # slip head pressure
+Pwtd <- 0 # wet/dry plaster pressure
+x <- 0.001 # element size
+visc <- 1 # viscosity of water
+fp <- 0.7 # solid fractions of plaster
+fc <- 0.5 # solid fraction of cake
+fs <- 0.2 # solid fraction of slip
+```
+
+```{r}
+m = as.matrix(mold)
+m <- apply(m, 2, rev)
+#par(mar=c(0, 0, 0, 0))
+image(t(m), useRaster=TRUE, axes=FALSE, col = topo.colors(5))
+```
+
+
+
+## 3. Solve Ax = b 
+
+## 4. Use x to update the changed cells
+
+## 5. Update the matrices
+
+## 6. Save to file only the mold iterations near specified times
+
+## 7. Lather, rinse, repeat
